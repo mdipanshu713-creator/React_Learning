@@ -1,0 +1,156 @@
+Parameter = Variable in function definition
+Argument  = Actual value passed to function
+
+
+What is .then() in JavaScript?
+
+.then() is used with a Promise to handle the 
+result after an asynchronous operation (like API calls) completes.
+
+
+Both **`.then()`** and **`async/await`** do the same thing: they handle asynchronous operations (like API calls). The difference is mainly in **syntax and readability**.
+
+---
+
+## Using `.then()`
+
+```javascript
+fetch("https://open.er-api.com/v6/latest/USD")
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+    });
+```
+
+### Flow
+
+```text
+fetch() 
+   ↓
+Promise returned
+   ↓
+.then() waits for response
+   ↓
+response.json()
+   ↓
+.then() waits for JSON
+   ↓
+console.log(data)
+```
+
+Think of it as a chain:
+
+```text
+Task 1 → then → Task 2 → then → Task 3
+```
+
+---
+
+## Using `async/await`
+
+```javascript
+async function getData() {
+    const response = await fetch(
+        "https://open.er-api.com/v6/latest/USD"
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
+getData();
+```
+
+### Flow
+
+```text
+fetch()
+  ↓
+await waits here
+  ↓
+response received
+  ↓
+await response.json()
+  ↓
+JSON received
+  ↓
+console.log(data)
+```
+
+Think of it as:
+
+```text
+Do Task 1
+Wait
+Do Task 2
+Wait
+Do Task 3
+```
+
+It looks like normal synchronous code, which is why many developers prefer it.
+
+---
+
+## Real-Life Example
+
+### `.then()`
+
+```javascript
+orderPizza()
+    .then((pizza) => eatPizza(pizza))
+    .then(() => drinkCola());
+```
+
+### `async/await`
+
+```javascript
+async function dinner() {
+    const pizza = await orderPizza();
+    eatPizza(pizza);
+    drinkCola();
+}
+```
+
+Both give the same result.
+
+---
+
+## React Example
+
+### With `.then()`
+
+```javascript
+useEffect(() => {
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => setData(data));
+}, []);
+```
+
+### With `async/await`
+
+```javascript
+useEffect(() => {
+    async function fetchData() {
+        const res = await fetch(url);
+        const data = await res.json();
+        setData(data);
+    }
+
+    fetchData();
+}, []);
+```
+
+---
+
+## Which should you use?
+
+| `.then()`         | `async/await`        |
+| ----------------- | -------------------- |
+| Older style       | Modern style         |
+| Chain-based       | Looks synchronous    |
+| Can become nested | Easier to read       |
+| Still widely used | Most preferred today |
+
+For React projects and interviews in 2026, learn both, but you'll see **`async/await` used more often** because the code is cleaner and easier to understand. 🚀

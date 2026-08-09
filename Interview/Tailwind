@@ -1,0 +1,189 @@
+Great! Since you're learning **React + Tailwind CSS**, focus on the **20% of Tailwind classes that you'll use 80% of the time**.
+
+## 1. Width & Height
+
+```html
+<div class="w-full"></div>      <!-- width: 100% -->
+<div class="h-screen"></div>    <!-- height: 100vh -->
+<div class="w-1/2"></div>       <!-- 50% width -->
+```
+
+## 2. Background Colors
+
+```html
+bg-red-500
+bg-blue-500
+bg-green-500
+bg-yellow-500
+bg-black
+bg-white
+```
+
+Example:
+
+```jsx
+<div className="bg-red-500 h-screen"></div>
+```
+
+---
+
+## 3. Text
+
+```html
+text-white
+text-black
+text-xl
+text-2xl
+text-4xl
+font-bold
+```
+
+Example:
+
+```jsx
+<h1 className="text-4xl font-bold">
+  Hello
+</h1>
+```
+
+---
+
+## 4. Padding & Margin
+
+```html
+p-2
+p-4
+p-6
+
+m-2
+m-4
+m-6
+```
+
+Example:
+
+```jsx
+<button className="p-4">
+  Click
+</button>
+```
+
+---
+
+## 5. Flexbox (Most Important)
+
+```html
+flex
+justify-center
+items-center
+flex-col
+gap-4
+```
+
+Example:
+
+```jsx
+<div className="flex justify-center items-center h-screen">
+  <h1>Hello</h1>
+</div>
+```
+
+### Visual Meaning
+
+```text
+justify-center  --> Horizontal center
+items-center    --> Vertical center
+```
+
+---
+
+## 6. Border Radius
+
+```html
+rounded
+rounded-lg
+rounded-xl
+rounded-full
+```
+
+Example:
+
+```jsx
+<button className="rounded-lg">
+  Button
+</button>
+```
+
+---
+
+## 7. Shadows
+
+```html
+shadow
+shadow-md
+shadow-lg
+```
+
+Example:
+
+```jsx
+<div className="shadow-lg">
+  Card
+</div>
+```
+
+---
+
+## 8. Hover Effects
+
+```jsx
+<button className="bg-blue-500 hover:bg-blue-700">
+  Hover Me
+</button>
+```
+
+---
+
+## 9. Position
+
+```html
+fixed
+absolute
+relative
+bottom-10
+top-0
+left-0
+right-0
+```
+
+Example:
+
+```jsx
+<div className="fixed bottom-10">
+  Fixed Button
+</div>
+```
+
+---
+
+## 10. Build This Mini Project
+
+```jsx
+function App() {
+  return (
+    <div className="h-screen flex justify-center items-center bg-gray-200">
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-bold">
+          Tailwind CSS
+        </h1>
+
+        <button className="mt-4 bg-blue-500 text-white p-2 rounded">
+          Click Me
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
